@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apology Game 💗</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #ffd6e7, #fff);
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    h1 {
+      color: #ff4d88;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    .no {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-800px);}
+    }
+  </style>
+</head>
+<body>
+
+<h1>im so sorry sayangg 😢</h1>
+<h2>will you forgive me?</h2>
+
+<button class="yes" onclick="forgive()">Yes 💕</button>
+<button class="no" id="noBtn">No 😭</button>
+
+<div id="message"></div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+// Make "No" button dodge cursor
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+function forgive() {
+  document.getElementById("message").innerHTML =
+    "thanksss 🥺💖 i will never do it again<br><br>may i still can teman youuu pleasee?";
+
+  setTimeout(() => {
+    document.getElementById("message").innerHTML += `
+      <br><br>
+      <button class="yes" onclick="finalYes()">yes you may 🥰</button>
+      <button class="no" onmouseover="moveFinalNo(this)">no you're not 😭</button>
+    `;
+  }, 1000);
+}
+
+function finalYes() {
+  document.getElementById("message").innerHTML =
+    "YAYYY thank youuu sayangg 💕🥰✨";
+}
+
+// Make second "No" button move too
+function moveFinalNo(btn) {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  btn.style.position = "absolute";
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+// Floating hearts effect
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = "100%";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
